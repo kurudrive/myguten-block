@@ -12,6 +12,7 @@
     "@wordpress/scripts": "6.0.0"
   },
   "scripts": {
+    "start": "wp-scripts start",
     "build": "wp-scripts build"
   }
 }
