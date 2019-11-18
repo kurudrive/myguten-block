@@ -6,7 +6,8 @@ Plugin Name: Fancy Quote
 function myguten_enqueue() {
 	wp_enqueue_script(
 		'myguten-script',
-		plugins_url( 'myguten.js', __FILE__ )
+		plugins_url( 'myguten.js', __FILE__ ),
+		array( 'wp-blocks' )
 	);
 }
 add_action( 'enqueue_block_editor_assets', 'myguten_enqueue' );
