@@ -1,7 +1,7 @@
 
 ## MEMO
 
-### How to set up
+### セットアップ
 
 https://developer.wordpress.org/block-editor/tutorials/javascript/js-build-setup/
 
@@ -41,3 +41,7 @@ wp_register_script(
 npm install で環境つくって...
 npm start で開発して
 npm run build で製品版出力
+
+---
+
+### チュートリアル
