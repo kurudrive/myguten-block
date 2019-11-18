@@ -10,5 +10,8 @@
   "license": "GPL-2.0-only",
   "devDependencies": {
     "@wordpress/scripts": "6.0.0"
+  },
+  "scripts": {
+    "build": "wp-scripts build"
   }
 }
