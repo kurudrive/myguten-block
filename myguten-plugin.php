@@ -1,18 +1,18 @@
 <?php
 /*
-Plugin Name: Fancy Quote
+Plugin Name: MyGuten Plugin
 */
 
-function myguten_enqueue() {
-	wp_enqueue_script(
-		'myguten-script',
-		plugins_url( 'myguten.js', __FILE__ ),
-		array( 'wp-blocks' ) // 依存ライブラリ
-	);
-}
-add_action( 'enqueue_block_editor_assets', 'myguten_enqueue' );
 
-function myguten_stylesheet() {
-	wp_enqueue_style( 'myguten-style', plugins_url( 'style.css', __FILE__ ) );
-}
-add_action( 'enqueue_block_assets', 'myguten_stylesheet' );
+require_once('src/fancy-quote/block.php');
+
+// 依存ファイルのパスを登録
+$asset_file = include( plugin_dir_path( __FILE__ ) . 'build/index.asset.php');
+
+// ブロックの読み込み時に依存ファイル情報も読み込む
+wp_register_script(
+    'myguten-block',
+    plugins_url( 'build/index.js', __FILE__ ),
+    $asset_file['dependencies'],
+    $asset_file['version']
+);
