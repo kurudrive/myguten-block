@@ -6,13 +6,18 @@ Plugin Name: MyGuten Plugin
 
 require_once( 'src/fancy-quote/block.php' );
 
-// 依存ファイルのパスを登録
-$asset_file = include( plugin_dir_path( __FILE__ ) . 'build/index.asset.php' );
+function gutenberg_examples_01_register_block() {
+	wp_register_script(
+		'gutenberg-examples-01',
+		plugins_url( 'build/index.js', __FILE__ ),
+		array( 'wp-blocks', 'wp-element' )
+	);
 
-// ブロックの読み込み時に依存ファイル情報も読み込む
-wp_register_script(
-	'myguten-block',
-	plugins_url( 'build/index.js', __FILE__ ),
-	$asset_file['dependencies'],
-	$asset_file['version']
-);
+	register_block_type(
+		'gutenberg-examples/example-01-basic', array(
+			'editor_script' => 'gutenberg-examples-01',
+		)
+	);
+
+}
+add_action( 'init', 'gutenberg_examples_01_register_block' );
