@@ -5,6 +5,24 @@
 
 https://developer.wordpress.org/block-editor/tutorials/javascript/js-build-setup/
 
+#### 最初だけ
+
+##### nodeのインストール
+
+nodeが入っていない環境は今どきないとは思うが、node -v でバージョンが出てこない場合は入れる
+
+```
+Ubuntu: apt install nodejs npm
+macOS: brew install node
+Windows: choco install node
+````
+
+```
+npm install --save-dev
+```
+
+#### 通常作業時
+
 ```
 // 製品ビルド
 $ npm run build

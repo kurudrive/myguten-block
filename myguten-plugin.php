@@ -3,8 +3,7 @@
 Plugin Name: MyGuten Plugin
 */
 
-
-require_once( 'src/fancy-quote/block.php' );
+require_once 'src/fancy-quote/block.php';
 
 function gutenberg_examples_01_register_block() {
 	wp_register_script(
@@ -14,7 +13,8 @@ function gutenberg_examples_01_register_block() {
 	);
 
 	register_block_type(
-		'gutenberg-examples/example-01-basic', array(
+		'gutenberg-examples/example-01-basic',
+		array(
 			'editor_script' => 'gutenberg-examples-01',
 		)
 	);

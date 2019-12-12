@@ -1,4 +1,4 @@
-wp.blocks.registerBlockStyle( 'core/quote', {
-    name: 'fancy-quot4',
-    label: 'Fancy Quote'
-} );
+wp.blocks.registerBlockStyle("core/quote", {
+  name: "fancy-quote",
+  label: "Fancy Quote"
+});
