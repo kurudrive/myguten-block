@@ -1,13 +1,120 @@
 
 ## MEMO
 
-### セットアップ
+### チュートリアル
+
+* Tutorials
+    * Getting Started with JavaScript
+        * Plugins Background(skip)
+        * Loading JavaScript
+        * Extending the Block Editor（コアブロックのスタイル拡張）
+        * Troubleshooting（トラブルシューティング）
+        * JavaScript Versions and Build Step(skip)
+        * Scope Your Code
+        * JavaScript Build Setup 
+
+---
+
+#### Loading JavaScript
+
+js ファイルは以下のように 'enqueue_block_editor_assets' で読み込む。
+
+##### プラグインの場合
+
+```
+function myguten_enqueue() {
+    wp_enqueue_script(
+        'myguten-script',
+        plugins_url( 'myguten.js', __FILE__ )
+    );
+}
+add_action( 'enqueue_block_editor_assets', 'myguten_enqueue' );
+```
+
+##### テーマの場合
+
+```
+function myguten_enqueue() {
+    wp_enqueue_script(
+        'myguten-script',
+        get_template_directory_uri() . '/myguten.js'
+    );
+}
+add_action( 'enqueue_block_editor_assets', 'myguten_enqueue' );
+```
+---
+
+#### Extending the Block Editor （コアブロックのスタイル拡張）
+
+jsに以下を書いて読み込む
+
+```
+wp.blocks.registerBlockStyle( 'core/quote', {
+    name: 'fancy-quote',
+    label: 'Fancy Quote',
+} );
+```
+
+cssは style.css などに
+
+```
+.is-style-fancy-quote {
+    color: tomato;
+}
+```
+
+みたいに書いて enqueue_block_assets で読み込む
+
+```
+function myguten_stylesheet() {
+    wp_enqueue_style( 'myguten-style', plugins_url( 'style.css', __FILE__ ) );
+}
+add_action( 'enqueue_block_assets', 'myguten_stylesheet' );
+```
+
+---
+
+#### Troubleshooting（トラブルシューティング）
+
+1. ブラウザの console log 見ろ
+2. そもそも js がちゃんと読み込まれてるか確認しろ
+3. 依存が読み込まれてるか確認しろ
+
+console.logでみたら例えば wp.blocks is undefined とか出てたら、wp.blocks が読み込まれてない。
+以下のように依存が書いてあるか確認
+
+```
+wp_enqueue_script(
+    'myguten-script',
+    plugins_url( 'myguten.js', __FILE__ ),
+    array( 'wp-blocks' )
+);
+```
+
+---
+
+#### Scope Your Code
+
+https://developer.wordpress.org/block-editor/tutorials/javascript/scope-your-code/
+
+function の中に入れないと同じ変数名の時上書きでご動作するぞ的な
+
+```
+function() {
+    var pluginName = 'MyPlugin';
+    console.log( 'Plugin name is ', pluginName );
+}
+```
+
+---
+
+#### JavaScript Build Setup 
 
 https://developer.wordpress.org/block-editor/tutorials/javascript/js-build-setup/
 
-#### 最初だけ
+##### 最初だけ
 
-##### nodeのインストール
+###### nodeのインストール
 
 nodeが入っていない環境は今どきないとは思うが、node -v でバージョンが出てこない場合は入れる
 
@@ -21,7 +128,7 @@ Windows: choco install node
 npm install --save-dev
 ```
 
-#### 通常作業時
+##### 通常作業時
 
 ```
 // 製品ビルド
@@ -30,12 +137,12 @@ $ npm run build
 $ npm start
 ```
 
-#### ソース管理
+##### ソース管理
 
 * node_module ディレクトリとかソース管理に入れるんじゃねーぞ。npm install すればいいだけだ。
 * プラグインディレクトリにも入れるなよ。 build/index.js を プラグインのPHPから enqueue すればいい。
 
-#### 依存関係管理
+##### 依存関係管理
 
 wp-scripts ver 5.0.0+ からは、ビルドすると依存関係の情報が書いてある index.asset.php も出力される。
 
@@ -54,7 +161,7 @@ wp_register_script(
 );
 ```
 
-#### 概要
+##### 概要
 
 npm install で環境つくって...
 npm start で開発して
@@ -62,4 +169,3 @@ npm run build で製品版出力
 
 ---
 
-### チュートリアル
