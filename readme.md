@@ -147,6 +147,16 @@ $ npm run build
 $ npm start
 ```
 
+start が動かない時は package.json に以下の start の行があるか確認してなければ追加する
+
+```
+"scripts": {
+  "start": "wp-scripts start",
+  "build": "wp-scripts build"
+},
+```
+
+
 ##### ソース管理
 
 * node_module ディレクトリとかソース管理に入れるんじゃねーぞ。npm install すればいいだけだ。
@@ -154,7 +164,7 @@ $ npm start
 
 ##### 依存関係管理
 
-wp-scripts ver 5.0.0+ からは、ビルドすると依存関係の情報が書いてある index.asset.php も出力される。
+wp-scripts ver 5.0.0+ からは、ビルドすると依存関係の情報が書いてある index.asset.php も自動的に出力される。
 
 依存ファイルはブロック登録の際に以下のように指定する
 
