@@ -4,20 +4,21 @@ Plugin Name: MyGuten Plugin
 */
 
 require_once 'src/fancy-quote/block.php';
+require_once 'src/examples_01/block.php';
+require_once 'src/examples_02/block.php';
 
-function gutenberg_examples_01_register_block() {
+function gutenberg_examples() {
+
+	// automatically load dependencies and version
+	// $asset_file = include plugin_dir_path( __FILE__ ) . 'build/index.asset.php';
+	$asset_file = include plugin_dir_path( __FILE__ ) . 'build/index.asset.php';
+
 	wp_register_script(
-		'gutenberg-examples-01',
+		'gutenberg-examples',
 		plugins_url( 'build/index.js', __FILE__ ),
-		array( 'wp-blocks', 'wp-element' )
-	);
-
-	register_block_type(
-		'gutenberg-examples/example-01-basic',
-		array(
-			'editor_script' => 'gutenberg-examples-01',
-		)
+		$asset_file['dependencies'],
+		$asset_file['version']
 	);
 
 }
-add_action( 'init', 'gutenberg_examples_01_register_block' );
+add_action( 'init', 'gutenberg_examples' );

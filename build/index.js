@@ -86,10 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/***/ "./src/examples_01/block.js":
+/*!**********************************!*\
+  !*** ./src/examples_01/block.js ***!
+  \**********************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -122,6 +122,55 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('gut
     }, "Hello World, step 1 (from the frontend).");
   }
 });
+
+/***/ }),
+
+/***/ "./src/examples_02/block.js":
+/*!**********************************!*\
+  !*** ./src/examples_02/block.js ***!
+  \**********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('gutenberg-examples/example-02-stylesheets', {
+  title: 'Example: Stylesheets',
+  icon: 'universal-access-alt',
+  category: 'layout',
+  example: {},
+  edit: function edit(_ref) {
+    var className = _ref.className;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+      className: className
+    }, "Hello World, step 2 (from the editor, in green).");
+  },
+  save: function save() {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Hello World, step 2 (from the frontend, in red).");
+  }
+});
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _examples_01_block_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./examples_01/block.js */ "./src/examples_01/block.js");
+/* harmony import */ var _examples_02_block_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./examples_02/block.js */ "./src/examples_02/block.js");
+
+
 
 /***/ }),
 
