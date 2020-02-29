@@ -12,6 +12,8 @@
         * JavaScript Versions and Build Step(skip)
         * Scope Your Code
         * JavaScript Build Setup 
+    * Blocks
+
 
 ---
 
@@ -31,7 +33,7 @@ function myguten_enqueue() {
 add_action( 'enqueue_block_editor_assets', 'myguten_enqueue' );
 ```
 
-##### テーマの場合
+##### テーマの場合（jsの読み込みURL例が違うだけ）
 
 ```
 function myguten_enqueue() {
@@ -97,7 +99,7 @@ wp_enqueue_script(
 
 https://developer.wordpress.org/block-editor/tutorials/javascript/scope-your-code/
 
-function の中に入れないと同じ変数名の時上書きでご動作するぞ的な
+function の中に入れないと同じ変数名の時上書きで誤動作するぞ的な
 
 ```
 function() {
@@ -123,6 +125,14 @@ Ubuntu: apt install nodejs npm
 macOS: brew install node
 Windows: choco install node
 ````
+
+開発用のパッケージがあるので、インストール
+
+```
+npm install --save-dev --save-exact @wordpress/scripts
+```
+
+git clone などで落としてきて node_modulesなどがまだない時は一式再インストール
 
 ```
 npm install --save-dev
@@ -168,4 +178,7 @@ npm start で開発して
 npm run build で製品版出力
 
 ---
+
+#### Blocks
+
 
