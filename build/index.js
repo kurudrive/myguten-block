@@ -86,6 +86,174 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/05-recipe-card/block.js":
+/*!*************************************!*\
+  !*** ./src/05-recipe-card/block.js ***!
+  \*************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('gutenberg-examples/recipe-card', {
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Example: Recipe Card', 'gutenberg-examples'),
+  icon: 'index-card',
+  category: 'layout',
+  attributes: {
+    title: {
+      type: 'array',
+      source: 'children',
+      selector: 'h2'
+    },
+    mediaID: {
+      type: 'number'
+    },
+    mediaURL: {
+      type: 'string',
+      source: 'attribute',
+      selector: 'img',
+      attribute: 'src'
+    },
+    ingredients: {
+      type: 'array',
+      source: 'children',
+      selector: '.ingredients'
+    },
+    instructions: {
+      type: 'array',
+      source: 'children',
+      selector: '.steps'
+    }
+  },
+  // ↓ これ必要？プレースホルダーとかで引っ張ってるのかと思いきやそうでもないみたいなので
+  example: {
+    attributes: {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Chocolate Chip Cookies', 'gutenberg-examples'),
+      mediaURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2ChocolateChipCookies.jpg/320px-2ChocolateChipCookies.jpg',
+      ingredients: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('flour', 'gutenberg-examples'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('sugar', 'gutenberg-examples'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('chocolate', 'gutenberg-examples'), '💖'],
+      instructions: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Mix', 'gutenberg-examples'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Bake', 'gutenberg-examples'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Enjoy', 'gutenberg-examples')]
+    }
+  },
+  edit: function edit(props) {
+    // props 内に持ってる値を一括で引っ張って代入してるという理解でOK?
+    var className = props.className,
+        _props$attributes = props.attributes,
+        title = _props$attributes.title,
+        mediaID = _props$attributes.mediaID,
+        mediaURL = _props$attributes.mediaURL,
+        ingredients = _props$attributes.ingredients,
+        instructions = _props$attributes.instructions,
+        setAttributes = props.setAttributes; // setAttributes は setState の WordPress版？
+
+    var onChangeTitle = function onChangeTitle(value) {
+      setAttributes({
+        title: value
+      });
+    };
+
+    var onSelectImage = function onSelectImage(media) {
+      setAttributes({
+        mediaURL: media.url,
+        mediaID: media.id
+      });
+    };
+
+    var onChangeIngredients = function onChangeIngredients(value) {
+      setAttributes({
+        ingredients: value
+      });
+    };
+
+    var onChangeInstructions = function onChangeInstructions(value) {
+      setAttributes({
+        instructions: value
+      });
+    };
+
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: className
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
+      tagName: "h2",
+      placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Write Recipe title…', 'gutenberg-examples'),
+      value: title,
+      onChange: onChangeTitle
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "recipe-image"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["MediaUpload"], {
+      onSelect: onSelectImage,
+      allowedTypes: "image",
+      value: mediaID,
+      render: function render(_ref) {
+        var open = _ref.open;
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+          className: mediaID ? 'image-button' : 'button button-large',
+          onClick: open
+        }, !mediaID ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Upload Image', 'gutenberg-examples') : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+          src: mediaURL,
+          alt: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Upload Recipe Image', 'gutenberg-examples')
+        }));
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Ingredients', 'gutenberg-examples')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
+      tagName: "ul",
+      multiline: "li",
+      placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Write a list of ingredients…', 'gutenberg-examples'),
+      value: ingredients,
+      onChange: onChangeIngredients,
+      className: "ingredients"
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Instructions', 'gutenberg-examples')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
+      tagName: "div",
+      multiline: "p",
+      className: "steps",
+      placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Write the instructions…', 'gutenberg-examples'),
+      value: instructions,
+      onChange: onChangeInstructions
+    }));
+  },
+  save: function save(props) {
+    var className = props.className,
+        _props$attributes2 = props.attributes,
+        title = _props$attributes2.title,
+        mediaURL = _props$attributes2.mediaURL,
+        ingredients = _props$attributes2.ingredients,
+        instructions = _props$attributes2.instructions;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: className
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"].Content, {
+      tagName: "h2",
+      value: title
+    }), mediaURL && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+      className: "recipe-image",
+      src: mediaURL,
+      alt: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Recipe Image', 'gutenberg-examples')
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Ingredients', 'gutenberg-examples')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"].Content, {
+      tagName: "ul",
+      className: "ingredients",
+      value: ingredients
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Instructions', 'gutenberg-examples')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"].Content, {
+      tagName: "div",
+      className: "steps",
+      value: instructions
+    }));
+  }
+});
+
+/***/ }),
+
 /***/ "./src/examples_01/block.js":
 /*!**********************************!*\
   !*** ./src/examples_01/block.js ***!
@@ -314,6 +482,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _examples_02_block_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./examples_02/block.js */ "./src/examples_02/block.js");
 /* harmony import */ var _examples_03_block_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./examples_03/block.js */ "./src/examples_03/block.js");
 /* harmony import */ var _examples_04_block_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./examples_04/block.js */ "./src/examples_04/block.js");
+/* harmony import */ var _05_recipe_card_block_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./05-recipe-card/block.js */ "./src/05-recipe-card/block.js");
+
 
 
 
@@ -343,6 +513,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "@wordpress/components":
+/*!*********************************************!*\
+  !*** external {"this":["wp","components"]} ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["components"]; }());
+
+/***/ }),
+
 /***/ "@wordpress/element":
 /*!******************************************!*\
   !*** external {"this":["wp","element"]} ***!
@@ -351,6 +532,17 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["element"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!***************************************!*\
+  !*** external {"this":["wp","i18n"]} ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["i18n"]; }());
 
 /***/ })
 

@@ -32,7 +32,7 @@ function gutenberg_examples_04_register_block() {
 
 	// ブロックの登録
 	register_block_type(
-		'gutenberg-examples/example-02-stylesheets',
+		'gutenberg-examples/example-04-stylesheets',
 		array(
 			'style'         => 'gutenberg-examples-04',
 			'editor_style'  => 'gutenberg-examples-04-editor',
