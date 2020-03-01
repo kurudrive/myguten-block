@@ -1,7 +1,7 @@
 import { registerBlockType } from '@wordpress/blocks';
  
 registerBlockType( 'gutenberg-examples/example-02-stylesheets', {
-    title: 'Example: Stylesheets',
+    title: 'Example 02',
  
     icon: 'universal-access-alt',
  

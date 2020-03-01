@@ -7,7 +7,7 @@ const blockStyle = {
 };
  
 registerBlockType( 'gutenberg-examples/example-01-basic-esnext', {
-    title: 'Example: Basic (esnext)',
+    title: 'Example 01',
     icon: 'universal-access-alt',
     category: 'layout',
     example: {},

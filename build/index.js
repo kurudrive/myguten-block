@@ -107,7 +107,7 @@ var blockStyle = {
   padding: '20px'
 };
 Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('gutenberg-examples/example-01-basic-esnext', {
-  title: 'Example: Basic (esnext)',
+  title: 'Example 01',
   icon: 'universal-access-alt',
   category: 'layout',
   example: {},
@@ -141,7 +141,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('gutenberg-examples/example-02-stylesheets', {
-  title: 'Example: Stylesheets',
+  title: 'Example 02',
   icon: 'universal-access-alt',
   category: 'layout',
   example: {},
