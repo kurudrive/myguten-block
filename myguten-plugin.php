@@ -9,6 +9,8 @@ require_once 'src/examples_02/block.php';
 require_once 'src/examples_03/block.php';
 require_once 'src/examples_04/block.php';
 require_once 'src/05-recipe-card/block.php';
+require_once 'src/post-list/block.php';
+require_once 'src/post-list-server/block.php';
 
 function gutenberg_examples() {
 
