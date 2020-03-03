@@ -140,17 +140,17 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('gut
       selector: '.steps'
     }
   },
-  // ↓ これ必要？プレースホルダーとかで引っ張ってるのかと思いきやそうでもないみたいなので
+  // ↓ 上部ツールバーから追加した時のプレビューに反映される
   example: {
     attributes: {
-      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Chocolate Chip Cookies', 'gutenberg-examples'),
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('わーい', 'gutenberg-examples'),
       mediaURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2ChocolateChipCookies.jpg/320px-2ChocolateChipCookies.jpg',
       ingredients: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('flour', 'gutenberg-examples'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('sugar', 'gutenberg-examples'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('chocolate', 'gutenberg-examples'), '💖'],
       instructions: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Mix', 'gutenberg-examples'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Bake', 'gutenberg-examples'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Enjoy', 'gutenberg-examples')]
     }
   },
   edit: function edit(props) {
-    // props 内に持ってる値を一括で引っ張って代入してるという理解でOK?
+    // props 内に持ってる値を一括で引っ張って代入してる
     var className = props.className,
         _props$attributes = props.attributes,
         title = _props$attributes.title,
@@ -158,7 +158,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('gut
         mediaURL = _props$attributes.mediaURL,
         ingredients = _props$attributes.ingredients,
         instructions = _props$attributes.instructions,
-        setAttributes = props.setAttributes; // setAttributes は setState の WordPress版？
+        setAttributes = props.setAttributes; // setAttributes は setState の WordPress版みたいな感じっぽい
 
     var onChangeTitle = function onChangeTitle(value) {
       setAttributes({
@@ -549,6 +549,8 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('gut
   title: 'Example: Post List',
   icon: 'megaphone',
   category: 'widgets',
+  // withSelect とは別に useSelect というのがあるっぽい
+  // https://github.com/inc2734/snow-monkey-editor/blob/db0b738cc851a002b5ebb79e4b1cf51f4efa5fe2/src/format/component/color-palette.js#L29
   edit: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__["withSelect"])(function (select) {
     return {
       posts: select('core').getEntityRecords('postType', 'post')

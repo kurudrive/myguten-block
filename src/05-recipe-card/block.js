@@ -33,10 +33,10 @@ registerBlockType( 'gutenberg-examples/recipe-card', {
 			selector: '.steps',
 		},
     },
-    // ↓ これ必要？プレースホルダーとかで引っ張ってるのかと思いきやそうでもないみたいなので
+    // ↓ 上部ツールバーから追加した時のプレビューに反映される
 	example: {
 		attributes: {
-			title: __( 'Chocolate Chip Cookies', 'gutenberg-examples' ),
+			title: __( 'わーい', 'gutenberg-examples' ),
 			mediaURL:
 				'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2ChocolateChipCookies.jpg/320px-2ChocolateChipCookies.jpg',
 			ingredients: [
@@ -54,14 +54,14 @@ registerBlockType( 'gutenberg-examples/recipe-card', {
 	},
 	edit: ( props ) => {
 
-        // props 内に持ってる値を一括で引っ張って代入してるという理解でOK?
+        // props 内に持ってる値を一括で引っ張って代入してる
 		const {
 			className,
 			attributes: { title, mediaID, mediaURL, ingredients, instructions },
 			setAttributes,
         } = props;
         
-        // setAttributes は setState の WordPress版？
+        // setAttributes は setState の WordPress版みたいな感じっぽい
 		const onChangeTitle = ( value ) => {
 			setAttributes( { title: value } );
 		};
