@@ -5,3 +5,4 @@ import './examples_04/block.js';
 import './05-recipe-card/block.js';
 import './post-list/block.js';
 import './post-list-server/block.js';
+import './meta-fields/block.js';

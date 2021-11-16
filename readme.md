@@ -191,6 +191,27 @@ npm run build で製品版出力
 
 ---
 
+#### メタフィールドの登録
+
+https://ja.wordpress.org/team/handbook/block-editor/how-to-guides/metabox/meta-block-2-register-meta/
+
+とりあえずphp側で定義する
+
+```
+// register custom meta tag field
+function myguten_register_post_meta() {
+    register_post_meta( 'post', 'myguten_meta_block_field', array(
+        'show_in_rest' => true,
+        'single' => true,
+        'type' => 'string',
+    ) );
+}
+add_action( 'init', 'myguten_register_post_meta' );
+```
+
+
+---
+
 #### Blocks
 
 編集画面のcssを登録すると後に読み込まれる

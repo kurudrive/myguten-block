@@ -11,6 +11,7 @@ require_once 'src/examples_04/block.php';
 require_once 'src/05-recipe-card/block.php';
 require_once 'src/post-list/block.php';
 require_once 'src/post-list-server/block.php';
+require_once 'src/meta-fields/block.php';
 
 function gutenberg_examples() {
 
@@ -26,4 +27,4 @@ function gutenberg_examples() {
 	);
 
 }
-add_action( 'init', 'gutenberg_examples' );
+add_action( 'enqueue_block_editor_assets', 'gutenberg_examples' );
